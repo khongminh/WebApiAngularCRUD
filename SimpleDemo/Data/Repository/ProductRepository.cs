@@ -17,9 +17,9 @@ namespace SimpleDemo.Data.Repository
 			this._dbSet = this._dbContext.Set<Product>();
 		}
 
-		public async Task Create(Product entity)
+		public async Task Create(Product product)
 		{
-			await _dbSet.AddAsync(entity);
+			await _dbSet.AddAsync(product);
 			await _dbContext.SaveChangesAsync();
 		}
 
@@ -40,9 +40,9 @@ namespace SimpleDemo.Data.Repository
 			return await _dbSet.AsNoTracking().FirstOrDefaultAsync(p => p.Id == id);
 		}
 
-		public async Task Update(int id, Product entity)
+		public async Task Update(int id, Product product)
 		{
-			_dbSet.Update(entity);
+			_dbSet.Update(product);
 			await _dbContext.SaveChangesAsync();
 		}
 	}
